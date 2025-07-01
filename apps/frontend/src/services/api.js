@@ -18,4 +18,3 @@ export async function fetchDeploymentInfo() {
     return null;
   }
 }
-n

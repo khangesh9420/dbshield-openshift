@@ -1,0 +1,38 @@
+name: CI-CD WORKFLOW
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+
+jobs:
+  build:   
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+    
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Setup docker build
+        run: |
+          docker build -t khangeshmatte123/frontend:latest apps/api
+          docker build -t khangeshmatte123/backend:latest apps/frontend
+
+      - name: Setup docker push to pvt registry 
+        run: |
+          docker push khangeshmatte123/frontend:latest apps/api
+          docker push khangeshmatte123/backend:latest apps/frontend
+
+
