@@ -1,0 +1,40 @@
+# Node
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Build outputs
+apps/**/build/
+apps/**/dist/
+apps/**/.next/
+apps/**/.turbo/
+
+# Logs
+logs
+*.log
+apps/**/logs
+
+# dotenv files
+*.env
+!.env.example
+
+# OS-specific
+.DS_Store
+Thumbs.db
+
+# IDE-specific
+.vscode/
+.idea/
+
+# Docker
+**/Dockerfile
+docker-compose.override.yml
+.env.local
+.env.*.local
+
+# React-specific
+apps/frontend/.cache/
+apps/frontend/.env.development.local
+apps/frontend/.env.production.local
+apps/frontend/public/env.js
+
