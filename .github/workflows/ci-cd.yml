@@ -37,7 +37,5 @@ jobs:
 
       - name: Setup docker push to pvt registry 
         run: |
-          docker push khangeshmatte123/frontend:latest apps/api
-          docker push khangeshmatte123/backend:latest apps/frontend
-
-
+          docker push khangeshmatte123/frontend:latest 
+          docker push khangeshmatte123/backend:latest
