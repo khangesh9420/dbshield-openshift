@@ -1,5 +1,6 @@
 # Node
-node_modules/
+apps/api/node_modules/
+apps/frontend/node_modules/
 npm-debug.log
 yarn-error.log
 
@@ -26,11 +27,6 @@ Thumbs.db
 .vscode/
 .idea/
 
-# Docker
-**/Dockerfile
-docker-compose.override.yml
-.env.local
-.env.*.local
 
 # React-specific
 apps/frontend/.cache/
