@@ -17,6 +17,11 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Check the content of the repository
+        run: |
+            ls -la "${{github.workspace}}/apps/api"
+
+
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
