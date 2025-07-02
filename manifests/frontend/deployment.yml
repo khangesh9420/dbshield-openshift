@@ -14,6 +14,6 @@ spec:
     spec:
       containers:
         - name: frontend-container
-          image: khangeshmatte123/frontend:latest
+          image: khangeshmatte123/frontend:0.2
           ports:
             - containerPort: 3000
