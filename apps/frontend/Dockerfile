@@ -1,19 +1,18 @@
-FROM node:18-alpine as frontend
+# ---- Stage 1: Build the React app ----
+FROM node:18-alpine AS build
 
 WORKDIR /app
-
-# Copy package files and install dependencies
 COPY package*.json ./
 RUN npm install
-
-# Copy the rest of the app (still as root)
 COPY . .
+RUN npm run build
 
-# Fix permissions after copying everything
-RUN chown -R node:node /app/node_modules
+# ---- Stage 2: Use OpenShift-friendly NGINX base ----
+FROM registry.access.redhat.com/ubi8/httpd-24
 
-# React dev server runs on 3000
-EXPOSE 3000
-ENV HOST=0.0.0.0
+# Copy built React app to NGINX content directory
+COPY --from=build /app/build/ /var/www/html/
 
-CMD ["npm", "start"]
+# The UBI image already has NGINX configured to serve from /opt/app-root/src
+
+EXPOSE 8080

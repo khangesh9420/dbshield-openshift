@@ -32,11 +32,11 @@ jobs:
 
       - name: Setup docker build
         run: |
-          docker build -t khangeshmatte123/frontend:0.3 apps/frontend
-          docker build -t khangeshmatte123/api:0.3 apps/api
+          docker build -t khangeshmatte123/frontend:0.7 apps/frontend
+          docker build -t khangeshmatte123/api:0.8 apps/api
           
 
       - name: Setup docker push to pvt registry 
         run: |
-          docker push khangeshmatte123/frontend:0.3
-          docker push khangeshmatte123/api:0.3
+          docker push khangeshmatte123/frontend:0.7
+          docker push khangeshmatte123/api:0.8

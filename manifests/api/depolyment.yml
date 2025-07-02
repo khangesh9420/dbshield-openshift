@@ -14,6 +14,13 @@ spec:
     spec:
       containers: 
         - name: api-container
-          image: khangeshmatte123/api:0.1
+          image: khangeshmatte123/api:0.8
+          imagePullPolicy: Always
           ports:
             - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /health    # Or use /health if that’s your health endpoint
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
